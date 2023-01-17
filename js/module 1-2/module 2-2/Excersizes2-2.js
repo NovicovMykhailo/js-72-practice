@@ -5,3 +5,14 @@
 
 
 const string = 'Welcome to the future';
+
+let str = string.split('');
+let textLine = "";
+
+for ( let i = str.length;  i >= 0; i -= 1){
+    // console.log (str[i]);
+    textLine = str[i];
+
+
+}
+console.log(textLine)
