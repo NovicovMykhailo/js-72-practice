@@ -1,18 +1,27 @@
-function checkStorage(available, ordered) {
-	// Change code below this line
-	if (ordered === 0) {
-		return console.log("Your order is empty!");}
-	if (ordered > available) {
-		return console.log("Your order is too large, not enough goods in stock!");
-	}
-		return console.log("The order is accepted, our manager will contact you");
-	// Change code above this line
-}
-checkStorage(100, 50);
-checkStorage(100, 130);
-checkStorage(70, 0);
-checkStorage(200, 20); //возвращает "The order is accepted, our manager will contact you"
-checkStorage(200, 250); //возвращает "Your order is too large, not enough goods in stock!"
-checkStorage(150, 0); //возвращает "Your order is empty!"
+// function includes(array, value) {
 
+// 	let conclusion;
+//  for( const item of array){
+// 	if( value === item)
+// 	return true;
+//  }
+// 	return false
 
+// }
+
+// /*Напиши функцию includes(array, value), которая делает тоже самое, 
+//   что и метод массива массив.includes(значение) - проверяет, 
+//   есть ли в массиве array значение value, возвращая true если есть и false в противном случае.
+
+// При выполнении этой задачи в теле функции includes() нельзя использовать метод массив.includes(значение).
+
+// Объявлена функция includes(array, value)
+
+// В функции includes используется for, return, но не метод массива includes*/
+
+// console.log(includes([1, 2, 3, 4, 5], 3)); // возвращает true
+// console.log(includes([1, 2, 3, 4, 5], 17)); // возвращает false
+// console.log(includes(["Earth", "Mars", "Venus", "Jupiter", "Saturn"], "Jupiter")); // возвращает true
+// console.log(includes(["Earth", "Mars", "Venus", "Jupiter", "Saturn"], "Uranus")); // возвращает false
+// console.log(includes(["apple", "plum", "pear", "orange"], "plum")); // возвращает true
+// console.log(includes(["apple", "plum", "pear", "orange"], "kiwi")); // возвращает false
