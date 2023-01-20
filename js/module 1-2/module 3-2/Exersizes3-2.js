@@ -25,3 +25,24 @@
 // console.log(includes(["Earth", "Mars", "Venus", "Jupiter", "Saturn"], "Uranus")); // возвращает false
 // console.log(includes(["apple", "plum", "pear", "orange"], "plum")); // возвращает true
 // console.log(includes(["apple", "plum", "pear", "orange"], "kiwi")); // возвращает false
+
+
+// function areYouPlayingBanjo(name) {
+//     // Implement me
+//     const arrayName = name.split("");
+//     if(arrayName[0] === 'R'){
+//       name = name + " play banjo";
+//     }else if(arrayName[0] === 'r'){
+//         name = name + " play banjo";
+//     }
+//     else{
+//       name = name + " does not play banjo";
+//     }
+//     return name;
+//   }
+
+//   console.log(areYouPlayingBanjo("Adam"));//, "Adam does not play banjo");
+//   console.log(areYouPlayingBanjo("Paul"));//, "Paul does not play banjo");
+//   console.log(areYouPlayingBanjo("Ringo"));//, "Ringo plays banjo");
+//   console.log(areYouPlayingBanjo("bravo"));//), "bravo does not play banjo");
+//   console.log(areYouPlayingBanjo("rolf"));//, "rolf plays banjo");
