@@ -1,25 +1,27 @@
-// ## Example 1 - Основы обьектов
+// # Example 4 - Комплексные задачи
 
-// Напиши скрипт, который, для объекта `user`, последовательно:
+// Напиши скрипт управления личным кабинетом интернет банка. 
+// Есть объект `account`
+// в котором необходимо реализовать методы для работы 
+// с балансом и историей
+// транзакций.
 
-// - добавляет поле `mood` со значением `'happy'`
-// - заменяет значение `hobby` на `'skydiving'`
-// - заменяет значение `premium` на `false`
-// - выводит содержимое объекта `user` в формате 
-// `ключ:значение` используя
-//   `Object.keys()` и `for...of`
+/*
+ * Типов транзацкий всего два.
+ * Можно положить либо снять деньги со счета.
+ */
+const Transaction = {
+  DEPOSIT: 'deposit',
+  WITHDRAW: 'withdraw',
+  addMoney(value){
+    DEPOSIT += value;
+    return this.DEPOSIT;
+  },
+  withdrawMoney(value){
+    this.WITHDRAW = value;
+    this.DEPOSIT -= value;
+  },
 
-// ### Код
-
-const user = {
-  name: 'Mango',
-  age: 20,
-  hobby: 'html',
-  premium: true,
 };
 
-
-user.mood = 'happy';
-user.hobby = 'skydiving';
-user.premium = 'false';
-
+console.log(Transaction.addMoney(100))
