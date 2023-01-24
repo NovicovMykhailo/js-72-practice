@@ -83,13 +83,14 @@ const account = {
 	transactions: [],
 
 	createTransaction(amount, type) {
-    
-    if(!type){ this.type = '$'}
-    else { this.type = type} ;
+		if (!type) {
+			this.type = "$";
+		} else {
+			this.type.push(type);
+		}
 
-    this.balance += amount;
-		this.transactions += [amount + this.type + ", "];
-
+		this.balance += amount;
+		this.transactions.push(amount + this.type);
 	},
 
 	deposit(amount) {
@@ -98,8 +99,8 @@ const account = {
 		return Transaction;
 	},
 	withdraw(amount) {
-    this.createTransaction(amount);
-  },
+		this.createTransaction(amount);
+	},
 	getBalance() {},
 	getTransactionDetails(id) {},
 	getTransactionTotal(type) {},
@@ -113,3 +114,28 @@ console.dir(account);
 // console.log(Transaction.addDeposit(200))
 // console.log(Transaction.addDeposit(200))
 // console.log(Transaction.removeMoney(300))
+
+// const products = [
+// 	{ name: "Radar", price: 1300, quantity: 4 },
+// 	{ name: "Scanner", price: 2700, quantity: 3 },
+// 	{ name: "Droid", price: 400, quantity: 7 },
+// 	{ name: "Grip", price: 1200, quantity: 9 },
+// ];
+
+// function calculateTotalPrice(productName) {
+// 	// Пиши код ниже этой строки
+// 	let totalPrice = 0;
+// 	for (const product of products) {
+// 		if (product.name === productName) {
+// 			totalPrice = product.price * product.quantity;
+// 		}
+// 	}
+// 	return totalPrice;
+
+// 	// Пиши код выше этой строки
+// }
+// console.log(calculateTotalPrice("Blaster"));
+// console.log(calculateTotalPrice("Radar"));
+// console.log(calculateTotalPrice("Droid"));
+// console.log(calculateTotalPrice("Grip"));
+// console.log(calculateTotalPrice("Scanner"));
