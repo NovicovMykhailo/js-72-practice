@@ -28,20 +28,23 @@ const account = {
   // История транзакций
   transactions: [],
 
+createTransaction(amount, type) {},
   /*
-   * Метод создает и // объект транзакции.
-   * Принимает сумму и тип транзакции.
-   
-  createTransaction(amount, type) {},
+  * Метод создает и  объект транзакции.
+  * Принимает сумму и тип транзакции.
+    
 
+
+
+deposit(amount) {},
   /*
    * Метод отвечающий за добавление суммы к балансу.
    * Принимает сумму танзакции.
    * Вызывает createTransaction для создания объекта транзакции
    * после чего добавляет его в историю транзакций
    
-  deposit(amount) {},
 
+withdraw(amount) {},
   /*
    * Метод отвечающий за снятие суммы с баланса.
    * Принимает сумму танзакции.
@@ -51,46 +54,50 @@ const account = {
    * Если amount больше чем текущий баланс, выводи сообщение
    * о том, что снятие такой суммы не возможно, недостаточно средств.
 
-  withdraw(amount) {},
 
+getBalance() {},
   /*
-   * Метод // текущий баланс
+   * Метод ищет текущий баланс
   
-  getBalance() {},
 
+getTransactionDetails(id) {},
   /*
-   * Метод ищет и // объект транзации по id
+   * Метод ищет объект транзации по id
 
-  getTransactionDetails(id) {},
 
+getTransactionTotal(type) {},
   /*
-   * Метод // количество средств
+   * Метод ищет количество средств
    * определенного типа транзакции из всей истории транзакций
  
-  getTransactionTotal(type) {},
+
 
   */
+// ====================================================
+
 const Transaction = {
 	DEPOSIT: "deposit",
 	WITHDRAW: "withdraw",
 };
 
+// ====================================================
 const account = {
-	// Текущий баланс счета
-	balance: 0,
 
-	// История транзакций
+	balance: 0,
 	transactions: [],
 
 	createTransaction(amount, type) {
-		if (!type) {
-			this.type = "$";
-		} else {
-			this.type.push(type);
+		Transaction.id = 0;
+		if (true) {
+			Transaction.id += 1;
 		}
+		amount > 0
+			? ((Transaction.DEPOSIT = amount), (Transaction.WITHDRAW = 0))
+			: ((Transaction.DEPOSIT = 0), (Transaction.WITHDRAW = amount));
+		!type ? (Transaction.type = "$") : (Transaction.type = type);
 
 		this.balance += amount;
-		this.transactions.push(amount + this.type);
+		this.transactions.push(Object(Transaction));
 	},
 
 	deposit(amount) {
@@ -106,9 +113,9 @@ const account = {
 	getTransactionTotal(type) {},
 };
 
-// console.log(account.createTransaction(100, "€"));
-console.log(account.deposit(200));
-console.log(account.withdraw(100));
+console.log(account.createTransaction(100, "€"));
+// console.log(account.deposit(200));
+// console.log(account.withdraw(100));
 
 console.dir(account);
 // console.log(Transaction.addDeposit(200))
@@ -139,6 +146,11 @@ console.dir(account);
 // console.log(calculateTotalPrice("Droid"));
 // console.log(calculateTotalPrice("Grip"));
 // console.log(calculateTotalPrice("Scanner"));
+
+console.log(Transaction);
+
+// ====================================================
+
 // const atTheOldToad = {
 // 	potions: [
 // 		{ name: "Speed potion", price: 460 },
@@ -175,7 +187,7 @@ console.dir(account);
 //        if(boolean === false){
 //       return `Potion ${potionName} is not in inventory!`;
 //        break
-//      } 
+//      }
 //      if(this.potions[i].name === potionName &&  boolean === true) {
 //       this.potions.splice(i,1)
 //      }
@@ -195,7 +207,7 @@ console.dir(account);
 //        if(boolean === false){
 //         return `Potion ${oldName} is not in inventory!`;
 //        break
-//      } 
+//      }
 //      if(this.potions[i].name === oldName &&  boolean === true) {
 //       this.potions[i].name = newName
 //      }
@@ -224,4 +236,4 @@ console.dir(account);
 //  console.log(atTheOldToad.updatePotionName("Dragon breath", "Polymorth"))// в свойстве potions будет массив [{ name: "Speed potion", price: 460 }, { name: "Polymorth", price: 780 }, { name: "Stone skin", price: 520 } ]
 //  console.log(atTheOldToad.updatePotionName("Stone skin", "Invulnerability potion"))// в свойстве potions будет массив [{ name: "Speed potion", price: 460 }, { name: "Dragon breath", price: 780 }, { name: "Invulnerability potion", price: 520 } ]
 //  console.log(atTheOldToad.updatePotionName("565", "Polymorth"))
-console.log(atTheOldToad.getPotions());
+// console.log(atTheOldToad.getPotions());
