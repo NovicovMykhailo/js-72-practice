@@ -32,9 +32,9 @@ createTransaction(amount, type) {},
   /*
   * Метод создает и  объект транзакции.
   * Принимает сумму и тип транзакции.
-    
+  */
 
-
+/*
 
 deposit(amount) {},
   /*
@@ -43,7 +43,8 @@ deposit(amount) {},
    * Вызывает createTransaction для создания объекта транзакции
    * после чего добавляет его в историю транзакций
    
-
+*/
+/*
 withdraw(amount) {},
   /*
    * Метод отвечающий за снятие суммы с баланса.
@@ -54,7 +55,8 @@ withdraw(amount) {},
    * Если amount больше чем текущий баланс, выводи сообщение
    * о том, что снятие такой суммы не возможно, недостаточно средств.
 
-
+*/
+/*
 getBalance() {},
   /*
    * Метод ищет текущий баланс
@@ -78,49 +80,65 @@ getTransactionTotal(type) {},
 const Transaction = {
 	DEPOSIT: "deposit",
 	WITHDRAW: "withdraw",
+	id: 0,
 };
 
 // ====================================================
 const account = {
-
 	balance: 0,
 	transactions: [],
 
 	createTransaction(amount, type) {
-		Transaction.id = 0;
-		if (true) {
-			Transaction.id += 1;
-		}
-		amount > 0
-			? ((Transaction.DEPOSIT = amount), (Transaction.WITHDRAW = 0))
-			: ((Transaction.DEPOSIT = 0), (Transaction.WITHDRAW = amount));
-		!type ? (Transaction.type = "$") : (Transaction.type = type);
 
-		this.balance += amount;
-		this.transactions.push(Object(Transaction));
+			amount > 0 ? Transaction.DEPOSIT = amount : Transaction.WITHDRAW = amount;
+			!type ? (Transaction.type = "$") : (Transaction.type = type);
+      Transaction.id += 1
+
+			this.transactions.push(Object(Transaction));
+		
 	},
 
 	deposit(amount) {
+		this.balance += amount;
 		this.createTransaction(amount);
-		Transaction.DEPOSIT += ` + ${amount}${this.type}`;
+		console.log(
+			`The virtual wallet is replenished for ${amount}${Transaction.type}. Total Balance: ${this.balance}${Transaction.type}`,
+		);
 		return Transaction;
 	},
 	withdraw(amount) {
-		this.createTransaction(amount);
+		if (this.balance >= amount) {
+			this.balance -= amount;
+			this.createTransaction(-amount);
+			console.log(
+				`The virtual wallet is withdrawal for ${amount}${Transaction.type}. Total Balance: ${this.balance}${Transaction.type}`,
+			);
+			return Transaction;
+		} else {
+			return `withdrawal ${amount} is not possible, there are not enough funds.`;
+		}
 	},
 	getBalance() {},
 	getTransactionDetails(id) {},
 	getTransactionTotal(type) {},
 };
 
-console.log(account.createTransaction(100, "€"));
-// console.log(account.deposit(200));
-// console.log(account.withdraw(100));
+// console.log(account.createTransaction(100, "€"));
+console.log(account.deposit(200));
+console.log(account.deposit(100));
+console.log(account.deposit(500));
+
+// console.log(account.withdraw(600));
+
+// console.log(account.getBalance());
+// console.log(account.getTransactionDetails(5));
+// console.log(account.getTransactionTotal());
 
 console.dir(account);
-// console.log(Transaction.addDeposit(200))
-// console.log(Transaction.addDeposit(200))
-// console.log(Transaction.removeMoney(300))
+
+// console.log(Transaction);
+
+// ====================================================
 
 // const products = [
 // 	{ name: "Radar", price: 1300, quantity: 4 },
@@ -146,8 +164,6 @@ console.dir(account);
 // console.log(calculateTotalPrice("Droid"));
 // console.log(calculateTotalPrice("Grip"));
 // console.log(calculateTotalPrice("Scanner"));
-
-console.log(Transaction);
 
 // ====================================================
 
