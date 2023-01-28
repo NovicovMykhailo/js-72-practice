@@ -80,55 +80,27 @@ getTransactionTotal(type) {},
 const Transaction = {
 	DEPOSIT: "deposit",
 	WITHDRAW: "withdraw",
-	id: 0,
 };
 
-// ====================================================
+
 const account = {
 	balance: 0,
 	transactions: [],
 
-	createTransaction(amount, type) {
-
-			amount > 0 ? Transaction.DEPOSIT = amount : Transaction.WITHDRAW = amount;
-			!type ? (Transaction.type = "$") : (Transaction.type = type);
-      Transaction.id += 1
-
-			this.transactions.push(Object(Transaction));
-		
-	},
-
-	deposit(amount) {
-		this.balance += amount;
-		this.createTransaction(amount);
-		console.log(
-			`The virtual wallet is replenished for ${amount}${Transaction.type}. Total Balance: ${this.balance}${Transaction.type}`,
-		);
-		return Transaction;
-	},
-	withdraw(amount) {
-		if (this.balance >= amount) {
-			this.balance -= amount;
-			this.createTransaction(-amount);
-			console.log(
-				`The virtual wallet is withdrawal for ${amount}${Transaction.type}. Total Balance: ${this.balance}${Transaction.type}`,
-			);
-			return Transaction;
-		} else {
-			return `withdrawal ${amount} is not possible, there are not enough funds.`;
-		}
-	},
+	createTransaction(amount, type) {},
+	deposit(amount) {},
+	withdraw(amount) {},
 	getBalance() {},
 	getTransactionDetails(id) {},
 	getTransactionTotal(type) {},
 };
 
-// console.log(account.createTransaction(100, "€"));
-console.log(account.deposit(200));
-console.log(account.deposit(100));
-console.log(account.deposit(500));
+console.log(account.createTransaction(100, "€"));
+// account.deposit(200);
+// account.deposit(100);
+// account.deposit(500);
 
-console.log(account.withdraw(600));
+// console.log(account.withdraw(600));
 
 // console.log(account.getBalance());
 // console.log(account.getTransactionDetails(5));
@@ -138,6 +110,8 @@ console.dir(account);
 
 // console.log(Transaction);
 
+
+// ====================================================
 // ====================================================
 
 // const products = [
