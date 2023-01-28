@@ -128,7 +128,7 @@ console.log(account.deposit(200));
 console.log(account.deposit(100));
 console.log(account.deposit(500));
 
-// console.log(account.withdraw(600));
+console.log(account.withdraw(600));
 
 // console.log(account.getBalance());
 // console.log(account.getTransactionDetails(5));
