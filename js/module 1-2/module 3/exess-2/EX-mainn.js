@@ -1,36 +1,42 @@
-// Example 4 - Деструктуризация
-
-// Перепиши функцию так, чтобы она принимала объект параметров со свойствами
-// `companyName` и `stock` и выводила репорт о количестве товаров на складе любой
-// компании.
 
 
-// Решение
-function getStockReport({ companyName, stock }) {
-  let total = 0;
-  for (const value of Object.values(stock)) {
-    total += value;
+// ## Example 6 - Операция rest
+
+// Напиши функцию `transformUsername(user)` так, чтобы она возвращала новый обьект
+// со свойством `fullName`, вместо `firstName` и `lastName`.
+
+transformUsername(user){
+  return {
+
   }
-  return `${companyName} has ${total} items in stock`;
 }
 
-console.log(
-  getStockReport({
-    companyName: 'Cyberdyne Systems',
-    stock: {
-      repairBots: 150,
-      defenceBots: 50,
-    },
-  }),
-); // "Cyberdyne Systems has 200 items in stock"
+// ```js
+// // Решение
+// function transformUsername({ firstName, lastName, ...otherProps }) {
+//   return {
+//     fullName: `${firstName} ${lastName}`,
+//     ...otherProps,
+//   };
+// }
 
-console.log(
-  getStockReport({
-    companyName: 'Belacci',
-    stock: {
-      shoes: 20,
-      skirts: 10,
-      hats: 5,
-    },
-  }),
-); // "Belacci has 35 item in stock"
+// console.log(
+//   transformId({
+//     id: 1,
+//     firstName: 'Jacob',
+//     lastName: 'Mercer',
+//     email: 'j.mercer@mail.com',
+//     friendCount: 40,
+//   }),
+// );
+
+// console.log(
+//   transformId({
+//     id: 2,
+//     firstName: 'Adrian',
+//     lastName: 'Cross',
+//     email: 'a.cross@hotmail.com',
+//     friendCount: 20,
+//   }),
+// );
+// ```
