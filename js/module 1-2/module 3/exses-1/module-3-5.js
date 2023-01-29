@@ -82,34 +82,58 @@ const Transaction = {
 	WITHDRAW: "withdraw",
 };
 
-
 const account = {
 	balance: 0,
 	transactions: [],
 
-	createTransaction(amount, type) {},
-	deposit(amount) {},
-	withdraw(amount) {},
-	getBalance() {},
-	getTransactionDetails(id) {},
-	getTransactionTotal(type) {},
+	createTransaction(amount, type) {
+		const transaction = { amount, type, id: this.transactions.length };
+		return transaction;
+	},
+	deposit(amount) {
+		this.balance += amount;
+		const transaction = this.createTransaction(amount, Transaction.DEPOSIT);
+		this.transactions.push(transaction);
+		return console.log(`на счет положено ${amount} $`);
+	},
+	withdraw(amount) {
+		if (amount > this.balance) {
+			console.log(`снятие ${amount} не возможно, недостаточно средств.`);
+			return;
+		}
+		this.balance -= amount;
+		const transaction = this.createTransaction(amount, Transaction.WITHDRAW);
+		this.transactions.push(transaction);
+		return console.log(`Со счета снято ${amount} $`);
+	},
+	getBalance() {
+		console.log(`Balance: ${this.balance} $`);
+	},
+	getTransactionTotal(type) {
+		console.log(`общее количество транзакций: ${this.transactions.length}`);
+    console.table(this.transactions)
+	},
+	getTransactionDetails(id) {
+		let count = 0;
+		for (let a of this.transactions) {
+			if (id === a.type) {
+				count += 1;
+			}
+		}
+		console.log(`количество операций ${id}: ${count}`);
+	},
 };
 
-console.log(account.createTransaction(100, "€"));
-// account.deposit(200);
-// account.deposit(100);
-// account.deposit(500);
+account.deposit(200);
+account.deposit(100);
+account.deposit(500);
+account.withdraw(600);
 
-// console.log(account.withdraw(600));
+account.getBalance();
+account.getTransactionTotal();
+account.getTransactionDetails("deposit");
 
-// console.log(account.getBalance());
-// console.log(account.getTransactionDetails(5));
-// console.log(account.getTransactionTotal());
-
-console.dir(account);
-
-// console.log(Transaction);
-
+console.log(account);
 
 // ====================================================
 // ====================================================
