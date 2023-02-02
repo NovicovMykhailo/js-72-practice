@@ -121,21 +121,15 @@ const users = [
 //  "brown", //функция возвращает массив объектов пользователей с именами Blackburn Dotson и Sheree Anthony
 
 const getFriends = users => {
-	return console.table(
-		users.map(user => {
-        return console.log(user.friends.forEach(element => {
-          console.log(element)
-        }))
-			// return user.friends.filter((friend, index) => {
-			// 	if (friend[index] !== friend) {
-			// 		return console.log(friend);
-			// 	}
-			// });
-		}),
-	);
+	// const flatArray = users.flatMap(user => {
+	//   return user.friends})
+
+	//   let newArray = flatArray.filter((friend, index,array) => array.indexOf(friend) === index )
+	//   return newArray
+	users.flatMap(user => user.friends).filter((friend, index, array) => array.indexOf(friend) === index);
 };
 
-console.log(getFriends(users));
+console.table(getFriends(users));
 // ["Sharron Pace", "Briana Decker", "Marilyn Mcintosh",
 // "Padilla Garrison", "Naomi Buckner", "Goldie Gentry",
 //  "Aisha Tran", "Jordan Sampson", "Eddie Strong",
