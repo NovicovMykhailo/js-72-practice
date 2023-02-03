@@ -133,78 +133,187 @@ const getCarByModel = (cars, model) => {
 // Пусть функция `sortByAscendingAmount` возвращает новый массив автомобилей
 // отсортированный по возврастанию значения свойства `amount`.
 
-// const sortByAscendingAmount = cars => {
-//     console.log(`Cars by accending amoiunt`)
-//     return cars.sort()
-// };
+const sortByAscendingAmount = cars => {
+	console.log(`Cars by accending amoiunt`);
+	return cars.sort((a, b) => a.amount - b.amount);
+};
 
 // console.table(sortByAscendingAmount(cars));
 
-const users = [
-	{
-		name: "Moore Hensley",
-		email: "moorehensley@indexia.com",
-		eyeColor: "blue",
-		friends: ["Sharron Pace"],
-		isActive: false,
-		balance: 2811,
-		gender: "male",
-	},
-	{
-		name: "Sharlene Bush",
-		email: "sharlenebush@tubesys.com",
-		eyeColor: "blue",
-		friends: ["Briana Decker", "Sharron Pace"],
-		isActive: true,
-		balance: 3821,
-		gender: "female",
-	},
-	{
-		name: "Ross Vazquez",
-		email: "rossvazquez@xinware.com",
-		eyeColor: "green",
-		friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
-		isActive: false,
-		balance: 3793,
-		gender: "male",
-	},
-	{
-		name: "Elma Head",
-		email: "elmahead@omatom.com",
-		eyeColor: "green",
-		friends: ["Goldie Gentry", "Aisha Tran"],
-		isActive: true,
-		balance: 2278,
-		gender: "female",
-	},
-	{
-		name: "Carey Barr",
-		email: "careybarr@nurali.com",
-		eyeColor: "blue",
-		friends: ["Jordan Sampson", "Eddie Strong", "Adrian Cross"],
-		isActive: true,
-		balance: 3951,
-		gender: "male",
-	},
-	{
-		name: "Blackburn Dotson",
-		email: "blackburndotson@furnigeer.com",
-		eyeColor: "brown",
-		friends: ["Jacklyn Lucas", "Linda Chapman", "Adrian Cross", "Solomon Fokes"],
-		isActive: false,
-		balance: 1498,
-		gender: "male",
-	},
-	{
-		name: "Sheree Anthony",
-		email: "shereeanthony@kog.com",
-		eyeColor: "brown",
-		friends: ["Goldie Gentry", "Briana Decker"],
-		isActive: true,
-		balance: 2764,
-		gender: "female",
-	},
-];
+/*
+|
+* ==================================================
+|
+*/
+
+// ## Example 8 - Метод sort
+
+// Пусть функция `sortByDescendingPrice` возвращает новый массив автомобилей
+// отсортированный по убыванию значения свойства `price`.
+
+const sortByDescendingPrice = cars => {
+	return cars.sort((a, b) => b.price - a.price);
+};
+
+// console.table(sortByDescendingPrice(cars));
+
+/*
+|
+* ==================================================
+|
+*/
+
+// ## Example 9 - Метод sort
+
+// Пусть функция `sortByModel` возвращает новый массив автомобилей отсортированный
+// по названию модели в алфавитном и обратном алфавитном порядке, в засисимости от
+// значения параметра `order`.
+
+const sortByModel = (cars, order) => {
+	if (order === "asc") {
+		return cars.sort((a, b) => a.model.localeCompare(b.model));
+	} else if (order === "desc"){
+		return cars.sort((a, b) => b.model.localeCompare(a.model));
+	}
+};
+
+// console.table(sortByModel(cars, "asc"));
+// console.table(sortByModel(cars, "desc"));
+
+/*
+|
+* ==================================================
+|
+*/
+
+// ## Example 10 - Метод reduce
+
+// Пусть функция `getTotalAmount` возвращает общее количество автомобилей(значение
+// свойств `amount`).
+
+const getTotalAmount = cars => {
+
+// return cars
+// .map(car => car.amount)
+// .reduce((acc,el) => acc +el)
+return [...cars].reduce((acc, el) => acc + el.amount,0)
+
+}
+
+// console.log(getTotalAmount(cars));
+
+/*
+|
+* ==================================================
+|
+*/
+
+// ## Example 11 - Цепочки методов
+
+// Пусть функция `getAvailableCarNames` возвращает массив моделей автомобилей, но
+// только тех, которые сейчас на распродаже.
+
+const getModelsOnSale = cars => {
+	console.log("Models On Sale: ")
+	return [...cars]
+	.filter(cars => cars.onSale)
+	.map(el => el.model)
+};
+
+// console.table(getModelsOnSale(cars));
+
+/*
+|
+* ==================================================
+|
+*/
+
+// ## Example 12 - Цепочки методов
+
+// Пусть функция `getSortedCarsOnSale` возвращает массив автомобилей на распродаже
+// (свойство onSale), отсортированных по возрастанию цены.
+
+const getSortedCarsOnSale = cars => {
+	console.log("автомобили на распродаже: отсортированные по возрастанию цены:  ")
+	return [...cars]
+	.filter(cars => cars.onSale)
+	.sort((a,b) => a.price - b.price)
+	.map(el => el.model)
+};
+
+// console.table(getSortedCarsOnSale(cars));
+
+/*
+|
+* ==================================================
+|
+*/
+
+// const users = [
+// 	{
+// 		name: "Moore Hensley",
+// 		email: "moorehensley@indexia.com",
+// 		eyeColor: "blue",
+// 		friends: ["Sharron Pace"],
+// 		isActive: false,
+// 		balance: 2811,
+// 		gender: "male",
+// 	},
+// 	{
+// 		name: "Sharlene Bush",
+// 		email: "sharlenebush@tubesys.com",
+// 		eyeColor: "blue",
+// 		friends: ["Briana Decker", "Sharron Pace"],
+// 		isActive: true,
+// 		balance: 3821,
+// 		gender: "female",
+// 	},
+// 	{
+// 		name: "Ross Vazquez",
+// 		email: "rossvazquez@xinware.com",
+// 		eyeColor: "green",
+// 		friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+// 		isActive: false,
+// 		balance: 3793,
+// 		gender: "male",
+// 	},
+// 	{
+// 		name: "Elma Head",
+// 		email: "elmahead@omatom.com",
+// 		eyeColor: "green",
+// 		friends: ["Goldie Gentry", "Aisha Tran"],
+// 		isActive: true,
+// 		balance: 2278,
+// 		gender: "female",
+// 	},
+// 	{
+// 		name: "Carey Barr",
+// 		email: "careybarr@nurali.com",
+// 		eyeColor: "blue",
+// 		friends: ["Jordan Sampson", "Eddie Strong", "Adrian Cross"],
+// 		isActive: true,
+// 		balance: 3951,
+// 		gender: "male",
+// 	},
+// 	{
+// 		name: "Blackburn Dotson",
+// 		email: "blackburndotson@furnigeer.com",
+// 		eyeColor: "brown",
+// 		friends: ["Jacklyn Lucas", "Linda Chapman", "Adrian Cross", "Solomon Fokes"],
+// 		isActive: false,
+// 		balance: 1498,
+// 		gender: "male",
+// 	},
+// 	{
+// 		name: "Sheree Anthony",
+// 		email: "shereeanthony@kog.com",
+// 		eyeColor: "brown",
+// 		friends: ["Goldie Gentry", "Briana Decker"],
+// 		isActive: true,
+// 		balance: 2764,
+// 		gender: "female",
+// 	},
+// ];
 
 // const getNamesSortedByFriendCount = users =>
 // 	[...users].sort((a, b) => a.friends.length - b.friends.length).map(users => users.name);
@@ -215,13 +324,23 @@ const users = [
 // возвращала массив имён пользователей
 // отсортированный по возрастанию количества их друзей (свойство friends).
 
-const getSortedFriends = users => {
-	return [...users]
-  .reduce((totalUser, user) => [...totalUser, ...user.friends], [])
-  .sort((a,b) => a.localeCompare(b))
-  .filter((name,index,array) => array.indexOf(name) = index)
-
-};
+// const getSortedFriends = users => [...users]
+//   .reduce((totalUser, user) => [...totalUser, ...user.friends], [])
+//   .sort((a,b) => a.localeCompare(b))
+//   .filter((name,index,array) => array.indexOf(name) === index)
+// ;
 // возвращала массив уникальных имён друзей (свойство friends) отсортированный по алфавиту .
 
-console.table(getSortedFriends(users));
+// console.table(getSortedFriends(users));
+
+// const getTotalBalanceByGender = (Allusers, gender) => {
+// 	return [...users]
+// 	.filter(el => el.gender === gender)
+// 	.reduce((user,idx) => user += idx.balance,0)
+// };
+
+// console.table(getTotalBalanceByGender(users, 'female'));
+
+// возвращала общий баланс пользователей (свойство balance), /totalBAllnce
+// пол которых (свойство gender) совпадает со
+// значением параметра gender. // if gender === gender
