@@ -14,7 +14,7 @@ const cars = [
 	{ make: "Ford", model: "Fusion", type: "sedan", amount: 13, price: 22120, onSale: true },
 	{ make: "Ford", model: "Explorer", type: "suv", amount: 6, price: 31660, onSale: false },
 ];
-console.table(cars);
+// console.table(cars);
 
 /*
 |
@@ -28,10 +28,11 @@ console.table(cars);
 // автомобилей.
 
 const getModels = cars => {
-    console.log("All Models")
-    return cars.map(car => car.model)};
+	console.log("All Models");
+	return cars.map(car => car.model);
+};
 
-console.table(getModels(cars));
+// console.table(getModels(cars));
 
 /*
 |
@@ -45,10 +46,11 @@ console.table(getModels(cars));
 // значением свойства `price` в зависимости от переданной скидки.
 
 const makeCarsWithDiscount = (cars, discount) => {
-    console.log(`New Car Price width discount ${discount*100} %`)
-    return cars.map(car => car.price - car.price * discount)};
-console.table(makeCarsWithDiscount(cars, 0.2));
-console.table(makeCarsWithDiscount(cars, 0.4));
+	console.log(`New Car Price width discount ${discount * 100} %`);
+	return cars.map(car => car.price - car.price * discount);
+};
+// console.table(makeCarsWithDiscount(cars, 0.2));
+// console.table(makeCarsWithDiscount(cars, 0.4));
 
 /*
 |
@@ -65,8 +67,8 @@ const filterByPrice = (cars, threshold) => {
 	console.log(`cars filtered by price lower than ${threshold}`);
 	console.log(cars.filter(car => car.price < threshold));
 };
-console.table(filterByPrice(cars, 30000));
-console.table(filterByPrice(cars, 25000));
+// console.table(filterByPrice(cars, 30000));
+// console.table(filterByPrice(cars, 25000));
 
 /*
 |
@@ -84,7 +86,7 @@ const getCarsWithDiscount = cars => {
 	return cars.filter(car => car.onSale);
 };
 
-console.table(getCarsWithDiscount(cars));
+// console.table(getCarsWithDiscount(cars));
 
 /*
 |
@@ -97,15 +99,13 @@ console.table(getCarsWithDiscount(cars));
 // Пусть функция `getCarsWithType` возвращает массив автомобилей тип которых
 // совпадает со значением параметра `type`.
 
-
 const getCarsWithType = (cars, type) => {
-    console.log( `Cars by type ${type}`)
-    return cars.filter( car => car.type === type)
+	console.log(`Cars by type ${type}`);
+	return cars.filter(car => car.type === type);
 };
 
-console.table(getCarsWithType(cars, 'suv'));
-console.table(getCarsWithType(cars, 'sedan'));
-
+// console.table(getCarsWithType(cars, "suv"));
+// console.table(getCarsWithType(cars, "sedan"));
 
 /*
 |
@@ -115,14 +115,13 @@ console.table(getCarsWithType(cars, 'sedan'));
 
 // ## Example 6 - Метод find
 
-
 const getCarByModel = (cars, model) => {
-    console.log(` Find  ${model}  car`)
-    return cars.find(car => car.model === model)
+	console.log(` Find  ${model}  car`);
+	return cars.find(car => car.model === model);
 };
 
-console.log(getCarByModel(cars, 'F-150'));
-console.log(getCarByModel(cars, 'CX-9'));
+// console.log(getCarByModel(cars, "F-150"));
+// console.log(getCarByModel(cars, "CX-9"));
 
 /*
 |
@@ -134,10 +133,95 @@ console.log(getCarByModel(cars, 'CX-9'));
 // Пусть функция `sortByAscendingAmount` возвращает новый массив автомобилей
 // отсортированный по возврастанию значения свойства `amount`.
 
+// const sortByAscendingAmount = cars => {
+//     console.log(`Cars by accending amoiunt`)
+//     return cars.sort()
+// };
 
-const sortByAscendingAmount = cars => {
-    console.log(`Cars by accending amoiunt`)
-    return cars.sort()
+// console.table(sortByAscendingAmount(cars));
+
+const users = [
+	{
+		name: "Moore Hensley",
+		email: "moorehensley@indexia.com",
+		eyeColor: "blue",
+		friends: ["Sharron Pace"],
+		isActive: false,
+		balance: 2811,
+		gender: "male",
+	},
+	{
+		name: "Sharlene Bush",
+		email: "sharlenebush@tubesys.com",
+		eyeColor: "blue",
+		friends: ["Briana Decker", "Sharron Pace"],
+		isActive: true,
+		balance: 3821,
+		gender: "female",
+	},
+	{
+		name: "Ross Vazquez",
+		email: "rossvazquez@xinware.com",
+		eyeColor: "green",
+		friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+		isActive: false,
+		balance: 3793,
+		gender: "male",
+	},
+	{
+		name: "Elma Head",
+		email: "elmahead@omatom.com",
+		eyeColor: "green",
+		friends: ["Goldie Gentry", "Aisha Tran"],
+		isActive: true,
+		balance: 2278,
+		gender: "female",
+	},
+	{
+		name: "Carey Barr",
+		email: "careybarr@nurali.com",
+		eyeColor: "blue",
+		friends: ["Jordan Sampson", "Eddie Strong", "Adrian Cross"],
+		isActive: true,
+		balance: 3951,
+		gender: "male",
+	},
+	{
+		name: "Blackburn Dotson",
+		email: "blackburndotson@furnigeer.com",
+		eyeColor: "brown",
+		friends: ["Jacklyn Lucas", "Linda Chapman", "Adrian Cross", "Solomon Fokes"],
+		isActive: false,
+		balance: 1498,
+		gender: "male",
+	},
+	{
+		name: "Sheree Anthony",
+		email: "shereeanthony@kog.com",
+		eyeColor: "brown",
+		friends: ["Goldie Gentry", "Briana Decker"],
+		isActive: true,
+		balance: 2764,
+		gender: "female",
+	},
+];
+
+// const getNamesSortedByFriendCount = users =>
+// 	[...users].sort((a, b) => a.friends.length - b.friends.length).map(users => users.name);
+
+// console.table(getNamesSortedByFriendCount(users));
+
+// Дополни функцию getNamesSortedByFriendCount(users)
+// возвращала массив имён пользователей
+// отсортированный по возрастанию количества их друзей (свойство friends).
+
+const getSortedFriends = users => {
+	return [...users]
+  .reduce((totalUser, user) => [...totalUser, ...user.friends], [])
+  .sort((a,b) => a.localeCompare(b))
+  .filter((name,index,array) => array.indexOf(name) = index)
+
 };
+// возвращала массив уникальных имён друзей (свойство friends) отсортированный по алфавиту .
 
-console.table(sortByAscendingAmount(cars));
+console.table(getSortedFriends(users));
