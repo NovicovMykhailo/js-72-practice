@@ -45,10 +45,15 @@ const getModels = cars => {
 // Пусть функция `makeCarsWithDiscount` возвращает новый массив объектов с изменным
 // значением свойства `price` в зависимости от переданной скидки.
 
-const makeCarsWithDiscount = (cars, discount) => {
-	console.log(`New Car Price width discount ${discount * 100} %`);
-	return cars.map(car => car.price - car.price * discount);
-};
+// const makeCarsWithDiscount = (cars, discount) => {
+// 	console.log(`New Car Price width discount ${discount * 100} %`);
+// 	return cars.map(car => car.price - car.price * discount);
+// };    // так делать нельзя. Єтот вариант изменяет оригинальній массив.
+
+const makeCarsWithDiscount = (cars, discount) => cars.map((auto) => ({...auto, price: auto.price -= discount}))
+
+// /\ это правильный метод  с созданием объекиа из распыленого(типо с новой копией) объекта оригинального масива
+
 // console.table(makeCarsWithDiscount(cars, 0.2));
 // console.table(makeCarsWithDiscount(cars, 0.4));
 
