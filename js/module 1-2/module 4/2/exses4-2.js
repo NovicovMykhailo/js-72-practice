@@ -50,7 +50,7 @@ const getModels = cars => {
 // 	return cars.map(car => car.price - car.price * discount);
 // };    // так делать нельзя. Єтот вариант изменяет оригинальній массив.
 
-const makeCarsWithDiscount = (cars, discount) => cars.map((auto) => ({...auto, price: auto.price -= discount}))
+const makeCarsWithDiscount = (cars, discount) => cars.map(auto => ({ ...auto, price: (auto.price -= discount) }));
 
 // /\ это правильный метод  с созданием объекиа из распыленого(типо с новой копией) объекта оригинального масива
 
@@ -177,7 +177,7 @@ const sortByDescendingPrice = cars => {
 const sortByModel = (cars, order) => {
 	if (order === "asc") {
 		return cars.sort((a, b) => a.model.localeCompare(b.model));
-	} else if (order === "desc"){
+	} else if (order === "desc") {
 		return cars.sort((a, b) => b.model.localeCompare(a.model));
 	}
 };
@@ -197,13 +197,11 @@ const sortByModel = (cars, order) => {
 // свойств `amount`).
 
 const getTotalAmount = cars => {
-
-// return cars
-// .map(car => car.amount)
-// .reduce((acc,el) => acc +el)
-return [...cars].reduce((acc, el) => acc + el.amount,0)
-
-}
+	// return cars
+	// .map(car => car.amount)
+	// .reduce((acc,el) => acc +el)
+	return [...cars].reduce((acc, el) => acc + el.amount, 0);
+};
 
 // console.log(getTotalAmount(cars));
 
@@ -219,10 +217,8 @@ return [...cars].reduce((acc, el) => acc + el.amount,0)
 // только тех, которые сейчас на распродаже.
 
 const getModelsOnSale = cars => {
-	console.log("Models On Sale: ")
-	return [...cars]
-	.filter(cars => cars.onSale)
-	.map(el => el.model)
+	console.log("Models On Sale: ");
+	return [...cars].filter(cars => cars.onSale).map(el => el.model);
 };
 
 // console.table(getModelsOnSale(cars));
@@ -238,13 +234,13 @@ const getModelsOnSale = cars => {
 // Пусть функция `getSortedCarsOnSale` возвращает массив автомобилей на распродаже
 // (свойство onSale), отсортированных по возрастанию цены.
 
-const getSortedCarsOnSale = cars => {
-	console.log("автомобили на распродаже: отсортированные по возрастанию цены:  ")
-	return [...cars]
-	.filter(cars => cars.onSale)
-	.sort((a,b) => a.price - b.price)
-	.map(el => el.model)
-};
+// const getSortedCarsOnSale = cars => {
+// 	console.log("автомобили на распродаже: отсортированные по возрастанию цены:  ")
+// 	return [...cars]
+// 	.filter(cars => cars.onSale)
+// 	.sort((a,b) => a.price - b.price)
+// 	.map(el => el.model)
+// };
 
 // console.table(getSortedCarsOnSale(cars));
 
@@ -349,3 +345,27 @@ const getSortedCarsOnSale = cars => {
 // возвращала общий баланс пользователей (свойство balance), /totalBAllnce
 // пол которых (свойство gender) совпадает со
 // значением параметра gender. // if gender === gender
+
+class Storage {
+	constructor(items = []) {
+		this.items = items;
+	}
+	getItems() {
+		return this.items;
+	}
+	addItem(newItem) {
+		return this.items.push(newItem);
+	}
+	removeItem(itemToRemove) {
+		return this.items.splice(this.items.indexOf(itemToRemove), 1);
+	}
+}
+
+// Change code above this line
+const storage = new Storage(["Nanitoids", "Prolonger", "Antigravitator"]);
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator"]
+storage.addItem("Droid");
+console.log(storage.getItems()); // ["Nanitoids", "Prolonger", "Antigravitator", "Droid"]
+storage.removeItem("Prolonger");
+console.log(storage.getItems()); // ["Nanitoids", "Antigravitator", "Droid"]
+
