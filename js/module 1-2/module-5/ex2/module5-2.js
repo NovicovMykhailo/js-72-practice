@@ -26,31 +26,31 @@ class Blogger {
 		this.age = age;
 		this.numberOfPosts = numberOfPosts;
 		this.topics = topics;
-        this.name = name;
+		this.name = name;
 	}
 	getInfo() {
 		return `User ${this.name} is ${this.age} years old and has ${this.numberOfPosts} posts`;
 	}
 	updatePostCount(value) {
 		this.numberOfPosts += value;
-        console.log(`user ${this.name}  ${this.email} add ${value} posts` )
+		console.log(`user ${this.name}  ${this.email} add ${value} posts`);
 	}
 }
 
-const mango = new Blogger({
+const mango1 = new Blogger({
 	email: "mango@mail.com",
-    name: 'Mango',
+	name: "Mango",
 	age: 24,
 	numberOfPosts: 20,
 	topics: ["tech", "cooking"],
 });
-console.log(mango.getInfo()); // User mango@mail.com is 24 years old and has 20 posts
-mango.updatePostCount(5);
-console.log(mango.getInfo()); // User mango@mail.com is 24 years old and has 25 posts
+console.log(mango1.getInfo()); // User mango@mail.com is 24 years old and has 20 posts
+mango1.updatePostCount(5);
+console.log(mango1.getInfo()); // User mango@mail.com is 24 years old and has 25 posts
 
 const poly = new Blogger({
 	email: "poly@mail.com",
-    name: 'Poly',
+	name: "Poly",
 	age: 19,
 	numberOfPosts: 17,
 	topics: ["sports", "gaming", "health"],
@@ -170,3 +170,85 @@ console.log("");
 // console.log(secondToggle.on);
 // console.groupEnd('secondToggle');
 // ```
+
+// class User {
+// 	email;
+
+// 	constructor(email) {
+// 		this.email = email;
+// 	}
+
+// 	get email() {
+// 		return this.email;
+// 	}
+
+// 	set email(newEmail) {
+// 		this.email = newEmail;
+// 	}
+// }
+// class Admin extends User {
+// 	// Change code below this line
+
+// 	static AccessLevel = {
+// 		BASIC: "basic",
+// 		SUPERUSER: "superuser",
+// 	};
+
+// 	blacklistedEmails = [];
+
+// 	blacklist(email) {
+// 		this.blacklistedEmails.push(email);
+// 	}
+
+// 	isBlacklisted(email) {
+// 		for (let el of this.blacklistedEmails) {
+// 			if (email === el) {
+// 				return true;
+// 			}
+// 			return false;
+// 		}
+// 	}
+
+// 	constructor({ email, accessLevel }) {
+// 		super(email);
+// 		this.accessLevel = accessLevel;
+// 	}
+
+// 	// Change code above this line
+// }
+
+// const mango = new Admin({
+// 	email: "mango@mail.com",
+// 	accessLevel: Admin.AccessLevel.SUPERUSER,
+// });
+
+// console.log(mango.email); // "mango@mail.com"
+// console.log(mango.accessLevel); // "superuser"
+
+// mango.blacklist("poly@mail.com");
+// console.log(mango.blacklistedEmails); // ["poly@mail.com"]
+// console.log(mango.isBlacklisted("mango@mail.com")); // false
+// console.log(mango.isBlacklisted("poly@mail.com")); // true
+
+/*
+  * Объявлен класс Admin
+	Класс Admin наследует от класса User
+	У класса Admin есть публичное свойство blacklistedEmails
+	У класса Admin есть публичный метод blacklist
+	У класса Admin есть публичный метод isBlacklisted
+	После вызова mango.blacklist("poly@mail.com") значение 
+	свойства blacklistedEmails это массив ["poly@mail.com"]
+	Вызов mango.isBlacklisted("mango@mail.com") возвращает false
+	Вызов mango.isBlacklisted("poly@mail.com") возвращает true
+  */
+
+/*
+	*Добавь классу Admin следующие свойства и методы.
+
+	Публичное свойство blacklistedEmails для хранения чёрного списка почтовых адресов пользователей. Значение по умолчанию это пустой массив.
+	Публичный метод blacklist(email) для добавления почты в чёрный список. Метод должен добавлять значение параметра email в массив хранящийся в свойстве blacklistedEmails.
+	Публичный метод isBlacklisted(email) для проверки почты в чёрном списке. Метод должен проверять наличие значения параметра email в массиве хранящемся в свойстве blacklistedEmails и возвращать true или false.
+	После объявления класса мы добавили инициализацию экземпляра и вызовы методов в той последовательности, в которой твой код будут проверять тесты. Пожалуйста ничего там не меняй.
+
+
+	*/
