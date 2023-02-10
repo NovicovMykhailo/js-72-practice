@@ -48,16 +48,16 @@ console.log(mango1.getInfo()); // User mango@mail.com is 24 years old and has 20
 mango1.updatePostCount(5);
 console.log(mango1.getInfo()); // User mango@mail.com is 24 years old and has 25 posts
 
-const poly = new Blogger({
+const poly1 = new Blogger({
 	email: "poly@mail.com",
 	name: "Poly",
 	age: 19,
 	numberOfPosts: 17,
 	topics: ["sports", "gaming", "health"],
 });
-console.log(poly.getInfo()); // User poly@mail.com is 19 years old and has 17 posts
-poly.updatePostCount(4);
-console.log(poly.getInfo()); // User poly@mail.com is 19 years old and has 21 posts
+console.log(poly1.getInfo()); // User poly@mail.com is 19 years old and has 17 posts
+poly1.updatePostCount(4);
+console.log(poly1.getInfo()); // User poly@mail.com is 19 years old and has 21 posts
 
 // ## Example 2 - Хранилище
 console.log("");
@@ -73,19 +73,35 @@ console.log("");
 // - `getItems()` - возвращает массив товаров.
 // - `addItem(item)` - получает новый товар и добавляет его к текущим.
 // - `removeItem(item)` - получает товар и, если он есть, удаляет его из текущих.
+class Storage {
+	constructor(item = []) {
+		this.items = item;
+	}
+	getItems() {
+		return this.items;
+	}
+	addItem(item) {
+		this.items.push(item);
+	}
+	removeItem(item) {
+		if (this.items.includes(item)) {
+			console.log(` this ${item} will be removed`)
+			this.items.splice(this.items.indexOf(item), 1);
+		}
+		return;
+	}
+}
 
-// ```js
-// const storage = new Storage(['🍎', '🍋', '🍇', '🍑']);
+const storage = new Storage(["🍎", "🍋", "🍇", "🍑"]);
 
-// const items = storage.getItems();
-// console.table(items); // [ '🍎', '🍋', '🍇', '🍑' ]
+const items = storage.getItems();
+console.log(items); // [ '🍎', '🍋', '🍇', '🍑' ]
 
-// storage.addItem('🍌');
-// console.table(storage.items); // [ '🍎', '🍋', '🍇', '🍑', '🍌' ]
+storage.addItem("🍌");
+console.log(storage.items); // [ '🍎', '🍋', '🍇', '🍑', '🍌' ]
 
-// storage.removeItem('🍋');
-// console.table(storage.items); // [ '🍎', '🍇', '🍑', '🍌' ]
-// ```
+storage.removeItem("🍋");
+console.log(storage.items); // [ '🍎', '🍇', '🍑', '🍌' ]
 
 // ## Example 3 - User
 
@@ -93,25 +109,47 @@ console.log("");
 // Объяви приватные свойства `#login` и `#email`, доступ к которым сделай через
 // геттер и сеттер `login` и `email`.
 
-// ```js
-// const mango = new User({
-//   login: 'Mango',
-//   email: 'mango@dog.woof',
-// });
+class User{
+	#login;
+	#email;
+	constructor({email, login} ={}){
+		this.email = email;
+		this.login = login;
+	}
+	get login(){
+		return this.#login
+	}
+	set login(login){
+		this.#login = login
+	}
+	get email(){
+		return this.#email
+	}
+	set email(email){
+		this.#email = email
+	}
+}
 
-// console.log(mango.login); // Mango
-// mango.login = 'Mangodoge';
-// console.log(mango.login); // Mangodoge
 
-// const poly = new User({
-//   login: 'Poly',
-//   email: 'poly@mail.com',
-// });
+const mango = new User({
+  login: 'Mango',
+  email: 'mango@dog.woof',
+});
 
-// console.log(poly.login); // Poly
-// poly.login = 'Polycutie';
-// console.log(poly.login); // Polycutie
-// ```
+console.log(mango.login); // Mango
+mango.login = 'Mangodoge';
+console.log(mango.login); // Mangodoge
+
+const poly = new User({
+  login: 'Poly',
+  email: 'poly@mail.com',
+});
+
+console.log(poly.login); // Poly
+poly.login = 'Polycutie';
+console.log(poly.login); // Polycutie
+\
+
 
 // ## Example 4 - Заметки
 
