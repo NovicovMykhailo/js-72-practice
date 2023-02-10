@@ -109,7 +109,6 @@ console.log("");
 console.log("Example 3 - User =======");
 console.log("");
 
-
 // Напиши класс `User` который создаёт объект со свойствами `login` и `email`.
 // Объяви приватные свойства `#login` и `#email`, доступ к которым сделай через
 // геттер и сеттер `login` и `email`.
@@ -228,21 +227,39 @@ console.log("");
 // объявляет одно свойство `on` - состояние вкл/выкл (true/false). По умолчанию
 // значение свойства `on` должно быть `false`.
 
-// ```js
-// const firstToggle = new Toggle({ isOpen: true });
-// console.group('firstToggle');
-// console.log(firstToggle.on);
-// firstToggle.toggle();
-// console.log(firstToggle.on);
-// console.groupEnd('firstToggle');
+class Toggle {
+	constructor({ isOpen: boolean = false } = {}) {
+		this.on = boolean;
+	}
 
-// const secondToggle = new Toggle();
-// console.group('secondToggle');
-// console.log(secondToggle.on);
-// secondToggle.toggle();
-// console.log(secondToggle.on);
-// console.groupEnd('secondToggle');
-// ```
+	toggle() {
+		if(this.on === false){
+			console.log('toggle is on')
+			return this.on = true
+		}else if (this.on === true)
+		console.log('toggle is off')
+		return this.on = false;
+	}
+}
+
+const firstToggle = new Toggle({ isOpen: true });
+
+console.group("firstToggle");
+console.log(firstToggle.on);
+
+firstToggle.toggle();
+
+console.log(firstToggle.on);
+console.groupEnd("firstToggle");
+
+const secondToggle = new Toggle();
+
+console.group("secondToggle");
+console.log(secondToggle.on);
+
+secondToggle.toggle();
+console.log(secondToggle.on);
+console.groupEnd('secondToggle');
 
 // class User {
 // 	email;
