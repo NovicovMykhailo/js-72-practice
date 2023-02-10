@@ -19,7 +19,7 @@ console.log("=======Модуль 5. Занятие 10. Прототипы и к�
 // количество постов которые нужно добавить пользователю.
 console.log("Example 1 - Блоггер =======");
 console.log("");
-
+/*
 class Blogger {
 	constructor({ email, age, numberOfPosts, topics, name } = {}) {
 		this.email = email;
@@ -58,7 +58,7 @@ const poly1 = new Blogger({
 console.log(poly1.getInfo()); // User poly@mail.com is 19 years old and has 17 posts
 poly1.updatePostCount(4);
 console.log(poly1.getInfo()); // User poly@mail.com is 19 years old and has 21 posts
-
+*/
 // ## Example 2 - Хранилище
 console.log("");
 console.log("Example 2 - Хранилище =======");
@@ -73,7 +73,7 @@ console.log("");
 // - `getItems()` - возвращает массив товаров.
 // - `addItem(item)` - получает новый товар и добавляет его к текущим.
 // - `removeItem(item)` - получает товар и, если он есть, удаляет его из текущих.
-class Storage {
+/*class Storage {
 	constructor(item = []) {
 		this.items = item;
 	}
@@ -85,7 +85,7 @@ class Storage {
 	}
 	removeItem(item) {
 		if (this.items.includes(item)) {
-			console.log(` this ${item} will be removed`)
+			console.log(` this ${item} will be removed`);
 			this.items.splice(this.items.indexOf(item), 1);
 		}
 		return;
@@ -102,92 +102,127 @@ console.log(storage.items); // [ '🍎', '🍋', '🍇', '🍑', '🍌' ]
 
 storage.removeItem("🍋");
 console.log(storage.items); // [ '🍎', '🍇', '🍑', '🍌' ]
-
+*/
 // ## Example 3 - User
+
+console.log("");
+console.log("Example 3 - User =======");
+console.log("");
+
 
 // Напиши класс `User` который создаёт объект со свойствами `login` и `email`.
 // Объяви приватные свойства `#login` и `#email`, доступ к которым сделай через
 // геттер и сеттер `login` и `email`.
 
-class User{
+/*class User {
 	#login;
 	#email;
-	constructor({email, login} ={}){
+	constructor({ email, login } = {}) {
 		this.email = email;
 		this.login = login;
 	}
-	get login(){
-		return this.#login
+	get login() {
+		return this.#login;
 	}
-	set login(login){
-		this.#login = login
+	set login(login) {
+		this.#login = login;
 	}
-	get email(){
-		return this.#email
+	get email() {
+		return this.#email;
 	}
-	set email(email){
-		this.#email = email
+	set email(email) {
+		this.#email = email;
 	}
 }
 
-
 const mango = new User({
-  login: 'Mango',
-  email: 'mango@dog.woof',
+	login: "Mango",
+	email: "mango@dog.woof",
 });
 
 console.log(mango.login); // Mango
-mango.login = 'Mangodoge';
+mango.login = "Mangodoge";
 console.log(mango.login); // Mangodoge
 
 const poly = new User({
-  login: 'Poly',
-  email: 'poly@mail.com',
+	login: "Poly",
+	email: "poly@mail.com",
 });
 
 console.log(poly.login); // Poly
-poly.login = 'Polycutie';
+poly.login = "Polycutie";
 console.log(poly.login); // Polycutie
-\
-
-
+*/
 // ## Example 4 - Заметки
+console.log("");
+console.log("Example 4 - Заметки =======");
+console.log("");
 
 // Напиши класс `Notes` который управляет коллекцией заметок в свойстве `items`.
 // Заметка это объект со свойствами `text` и `priority`. Добавь классу статическое
 // свойство `Priority`, в котором будет храниться объект с приоритетами.
-
-// ```js
 // {
 //   LOW: 'low',
 //   NORMAL: 'normal',
 //   HIGH: 'high'
 // }
-// ```
 
 // Добавь методы `addNote(note)`, `removeNote(text)` и
 // `updatePriority(text, newPriority)`.
+/*
+class Notes {
+	static Priority = {
+		LOW: "low",
+		NORMAL: "normal",
+		HIGH: "high",
+	};
 
-// ```js
-// const myNotes = new Notes([]);
+	items = [];
 
-// myNotes.addNote({ text: 'Моя первая заметка', priority: Notes.Priority.LOW });
-// console.log(myNotes.items);
+	constructor({ text, priority } = {}) {
+		this.text = text;
+		this.Priority = priority;
+	}
+	addNote(note) {
+		this.items.push(note);
+	}
+	removeNote(text){
+		for( let a of this.items){
+			if(a.text === text){
+				return this.items.splice(this.items.indexOf(a),1)
+			}
+		}return
+	}
+	updateNote(text, newPriority){
+		for( let a of this.items){
+			if(a.text === text){
+				a.priority = newPriority;
+			}
+		}
 
-// myNotes.addNote({
-//   text: 'Моя вторая заметка',
-//   priority: Notes.Priority.NORMAL,
-// });
-// console.log(myNotes.items);
+	}
+}
 
-// myNotes.removeNote('Моя первая заметка');
-// console.log(myNotes.items);
+const myNotes = new Notes([]);
 
-// myNotes.updateNote('Моя вторая заметка', Notes.Priority.HIGH);
-// console.log(myNotes.items);
-// ```
+myNotes.addNote({ text: "Моя первая заметка", priority: Notes.Priority.LOW });
+console.log(myNotes.items);
 
+myNotes.addNote({text: "Моя вторая заметка", priority: Notes.Priority.NORMAL,});
+console.log(myNotes.items);
+
+myNotes.removeNote('Моя первая заметка');
+console.log(myNotes.items);
+
+myNotes.updatePriority
+
+myNotes.updateNote('Моя вторая заметка', Notes.Priority.HIGH);
+console.log(myNotes.items);
+*/
 // ## Example 5 - Toggle
+console.log("");
+console.log("Example 5 - Toggle =======");
+console.log("");
 
 // Напишите класс `Toggle` который принимает объект настроек `{isOpen: boolean}` и
 // объявляет одно свойство `on` - состояние вкл/выкл (true/false). По умолчанию
