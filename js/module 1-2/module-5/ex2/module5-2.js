@@ -73,7 +73,7 @@ console.log("");
 // - `getItems()` - возвращает массив товаров.
 // - `addItem(item)` - получает новый товар и добавляет его к текущим.
 // - `removeItem(item)` - получает товар и, если он есть, удаляет его из текущих.
-/*class Storage {
+class Storage {
 	constructor(item = []) {
 		this.items = item;
 	}
@@ -102,7 +102,7 @@ console.log(storage.items); // [ '🍎', '🍋', '🍇', '🍑', '🍌' ]
 
 storage.removeItem("🍋");
 console.log(storage.items); // [ '🍎', '🍇', '🍑', '🍌' ]
-*/
+
 // ## Example 3 - User
 
 console.log("");
@@ -244,22 +244,22 @@ class Toggle {
 
 const firstToggle = new Toggle({ isOpen: true });
 
-console.group("firstToggle");
-console.log(firstToggle.on);
+// console.group("firstToggle");
+// console.log(firstToggle.on);
 
-firstToggle.toggle();
+// firstToggle.toggle();
 
-console.log(firstToggle.on);
-console.groupEnd("firstToggle");
+// console.log(firstToggle.on);
+// console.groupEnd("firstToggle");
 
-const secondToggle = new Toggle();
+// const secondToggle = new Toggle();
 
-console.group("secondToggle");
-console.log(secondToggle.on);
+// console.group("secondToggle");
+// console.log(secondToggle.on);
 
-secondToggle.toggle();
-console.log(secondToggle.on);
-console.groupEnd('secondToggle');
+// secondToggle.toggle();
+// console.log(secondToggle.on);
+// console.groupEnd('secondToggle');
 
 // class User {
 // 	email;
